@@ -14,6 +14,8 @@ let comida = {
     y: Math.floor(Math.random() * 15 + 1) * box
 }
 
+let pontos = document.querySelector('#ponto');
+let qtd_pontos = 0;
 //funcao para criar o background
 function criarBG(){
     context.fillStyle = "rgb(27, 27, 27)"; //definir estilo
@@ -54,8 +56,7 @@ function iniciarJogo(){
     // caso a cobra bata nela mesma
     for(i = 1; i < snake.length; i++){
         if(snake[0].x == snake[i].x && snake[0].y == snake[i].y){
-            //clearInterval(jogo);
-            reset();
+            clearInterval(jogo);
         }
     }
 
@@ -77,7 +78,10 @@ function iniciarJogo(){
     }else{
         comida.x = Math.floor(Math.random() * 15 + 1) * box;
         comida.y = Math.floor(Math.random() * 15 + 1) * box;
+        qtd_pontos++;
     }
+
+    pontos.innerText = qtd_pontos;
 
     let newHead = {
         x: snake_X,
@@ -86,6 +90,22 @@ function iniciarJogo(){
 
     // adiciona na frente
     snake.unshift(newHead);
+}
+
+function reset(){
+    clearInterval(jogo);
+    setIntervalo();
+    snake = [];
+    direction = "";
+    qtd_pontos = 0;
+    snake[0] = {
+        x: 8 * box,
+        y: 8 * box
+    };
+}
+
+function setIntervalo(){
+    jogo = setInterval(iniciarJogo, 120);
 }
 
 let jogo = setInterval(iniciarJogo, 120);
