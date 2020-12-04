@@ -15,6 +15,7 @@ let comida = {
 }
 
 let pontos = document.querySelector('#ponto');
+let game_over = document.querySelector('#game_over');
 let qtd_pontos = 0;
 //funcao para criar o background
 function criarBG(){
@@ -48,15 +49,16 @@ function update(event){
 
 function iniciarJogo(){
     // caso chegue no limite do quadrado, a cobra aparece do outro lado
-    if(snake[0].x > 16 * box && direction == "right") snake[0].x = 0;
-    if(snake[0].x < 0 && direction == "left") snake[0].x = 16 * box;
-    if(snake[0].y > 16 * box && direction == "down") snake[0].y = 0;
-    if(snake[0].y < 0 && direction == "up") snake[0].y = 16 * box;
+    if(snake[0].x > 15 * box) snake[0].x = 0;
+    if(snake[0].x < 0) snake[0].x = 15 * box;
+    if(snake[0].y > 15 * box) snake[0].y = 0;
+    if(snake[0].y < 0) snake[0].y = 15 * box;
 
     // caso a cobra bata nela mesma
     for(i = 1; i < snake.length; i++){
         if(snake[0].x == snake[i].x && snake[0].y == snake[i].y){
             clearInterval(jogo);
+            //game_over.innerText = 'GAME OVER';
         }
     }
 
@@ -71,7 +73,7 @@ function iniciarJogo(){
     if(direction == "left") snake_X -= box;
     if(direction == "up") snake_Y -= box;
     if(direction == "down") snake_Y += box;
-
+    
     if(snake_X != comida.x || snake_Y != comida.y){
         snake.pop();
 
@@ -79,8 +81,8 @@ function iniciarJogo(){
         comida.x = Math.floor(Math.random() * 15 + 1) * box;
         comida.y = Math.floor(Math.random() * 15 + 1) * box;
         qtd_pontos++;
-    }
-
+    } 
+    
     pontos.innerText = qtd_pontos;
 
     let newHead = {
@@ -97,6 +99,7 @@ function reset(){
     setIntervalo();
     snake = [];
     direction = "";
+    //game_over.innerText = '';
     qtd_pontos = 0;
     snake[0] = {
         x: 8 * box,
