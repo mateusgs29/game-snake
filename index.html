@@ -7,8 +7,15 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Jogo da Cobrinha</h1>
-    <canvas id="snake" width="512" height="512"></canvas>
-    <script defer src="js/script.js"></script>
+    <div class="jogo">
+        <canvas id="snake" width="512" height="512"></canvas>
+        <div class="info">
+            <h1>JOGO DA COBRINHA</h1>
+            <button class="btn_reset" onclick="reset()">RESET</button>
+        </div>
+    </div>
+    
+    <script defer src="js/game.js"></script>
+    <script src="js/painel.js"></script>
 </body>
 </html>
