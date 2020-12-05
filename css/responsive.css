@@ -1,0 +1,10 @@
+@media screen and (max-width: 800px){
+    .jogo{
+        flex-direction: column;
+    }
+    .info{
+        border-left: none;
+        border-top: 5px solid #fff;
+        height: 250px;
+    }
+} 
