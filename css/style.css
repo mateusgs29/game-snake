@@ -58,7 +58,7 @@ body{
     font-size: 1.5rem;
 }
 
-.game_over{
+#game_over{
     font-family: 'Black Ops One', cursive;
     font-size: 2rem;
     animation: pisca 1.2s infinite;
