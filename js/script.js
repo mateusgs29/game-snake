@@ -58,7 +58,7 @@ function iniciarJogo(){
     for(i = 1; i < snake.length; i++){
         if(snake[0].x == snake[i].x && snake[0].y == snake[i].y){
             clearInterval(jogo);
-            //game_over.innerText = 'GAME OVER';
+            game_over.innerHTML = 'GAME OVER';
         }
     }
 
@@ -99,7 +99,7 @@ function reset(){
     setIntervalo();
     snake = [];
     direction = "";
-    //game_over.innerText = '';
+    game_over.innerHTML = '';
     qtd_pontos = 0;
     snake[0] = {
         x: 8 * box,
